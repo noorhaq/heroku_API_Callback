@@ -4,6 +4,8 @@ import requests
 
 app = Flask(__name__)
 
+
+
 @app.route("/")
 def index():
     # Read Image
@@ -14,13 +16,6 @@ def index():
 
     # Convert Image into RGB
     img = img.convert('RGB')
-
-    # call function
-    common_color = most_common_used_color(img)
-
-    return common_color
-
-def most_common_used_color(img):
     # Get width and height of Image
     width, height = img.size
  
@@ -42,5 +37,7 @@ def most_common_used_color(img):
             b_total += b
             count += 1
  
-    return round(r_total/count), round(g_total/count), round(b_total/count),
- 
+    common_color = (round(r_total/count), round(g_total/count), round(b_total/count))
+    converted_num = f'{common_color}'
+    return converted_num
+
